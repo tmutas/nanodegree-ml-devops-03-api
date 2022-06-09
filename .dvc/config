@@ -1,0 +1,6 @@
+[core]
+    remote = localremote
+['remote "aws"']
+    url = s3://nanodegree-ml-devops-03-api
+['remote "localremote"']
+    url = ../starter/data
