@@ -34,6 +34,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8
       - name: Analysing the code with pylint
+        # Ignoring E501 long lines, and W503,4 binary operator line breaks
         run: |
-          flake8 $(git ls-files '*.py') --statistics
+          flake8 $(git ls-files '*.py') --statistics --ignore=E501,W503
       
