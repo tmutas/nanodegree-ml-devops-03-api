@@ -1,8 +1,11 @@
-from sklearn.metrics import fbeta_score, precision_score, recall_score
+from pathlib import Path
+import pickle
 
+from sklearn.metrics import fbeta_score, precision_score, recall_score
+from sklearn.ensemble import RandomForestClassifier
 
 # Optional: implement hyperparameter tuning.
-def train_model(X_train, y_train):
+def train_model(X_train, y_train, params):
     """
     Trains a machine learning model and returns it.
 
@@ -12,13 +15,20 @@ def train_model(X_train, y_train):
         Training data.
     y_train : np.array
         Labels.
+    params : dict
+        Dictionary 
     Returns
     -------
     model
         Trained machine learning model.
     """
+    rf = RandomForestClassifier(
+        **params,
+    )
+    
+    rf = rf.fit(X_train, y_train)
 
-    pass
+    return rf
 
 
 def compute_model_metrics(y, preds):
@@ -37,9 +47,10 @@ def compute_model_metrics(y, preds):
     recall : float
     fbeta : float
     """
-    fbeta = fbeta_score(y, preds, beta=1, zero_division=1)
     precision = precision_score(y, preds, zero_division=1)
     recall = recall_score(y, preds, zero_division=1)
+    fbeta = fbeta_score(y, preds, beta=1, zero_division=1)
+
     return precision, recall, fbeta
 
 
@@ -57,4 +68,24 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    pass
+    
+    return model.predict(X)
+
+def save_model(path, artifacts : dict):
+    """Saves artifacts to given directory as pickles
+
+    Parameters
+    ----------
+    path : path-like
+        Path or string to directory, if does not exists will create
+    artifacts : dict
+        Dict of name:artifact pairs. Names will be used as filenames
+    """    
+    path = Path(path)
+    if not path.is_dir():
+        path.mkdir(parents=True)
+
+    for name, art in artifacts.items():
+        art_path = path / f"{name}.pkl"
+        with art_path.open("wb+") as fl:
+            pickle.dump(art, fl)
