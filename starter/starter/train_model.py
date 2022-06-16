@@ -2,7 +2,6 @@
 from argparse import ArgumentParser
 from pathlib import Path
 import json
-import pickle
 import logging
 import sys
 
@@ -11,12 +10,10 @@ from sklearn.model_selection import train_test_split
 
 # Add the necessary imports for the starter code.
 from ml.data import process_data
-from ml.model import train_model, compute_model_metrics, save_model
+from ml.model import train_model, save_model
 
-logging.basicConfig(
-    stream=sys.stdout,
-    level=logging.DEBUG
-)
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+
 
 # Add code to load in the data.
 def run(args):
@@ -45,7 +42,7 @@ def run(args):
         "sex",
         "native-country",
     ]
-    
+
     X_train, y_train, encoder, lb = process_data(
         train, categorical_features=cat_features, label="salary", training=True
     )
@@ -60,20 +57,17 @@ def run(args):
 
     # Train and save a model.
 
-    train_params = {"n_estimators":5, "max_depth":2}
+    train_params = {"n_estimators": 5, "max_depth": 2}
     model = train_model(X_train, y_train, train_params)
 
     logging.debug("Model trained")
 
-    artifacts = {
-        "model" : model,
-        "encoder" : encoder,
-        "labelbinarizer" : lb
-    }
+    artifacts = {"model": model, "encoder": encoder, "labelbinarizer": lb}
     if args.artifact_path is not None:
         save_model(args.artifact_path, artifacts)
         logging.debug(f"Artifacts saved to {args.artifact_path}")
-    
+
+
 if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument(
@@ -87,7 +81,7 @@ if __name__ == "__main__":
         type=Path,
         help="Directory to where model artifacts are to be saved, does not save by default",
         required=False,
-        default=None
+        default=None,
     )
 
     parser.add_argument(
@@ -97,7 +91,7 @@ if __name__ == "__main__":
             "File path to a json that contains model parameters"
             "that can be passed to sklearn's RandomForestClassifier"
         ),
-        default=None
+        default=None,
     )
 
     args = parser.parse_args()

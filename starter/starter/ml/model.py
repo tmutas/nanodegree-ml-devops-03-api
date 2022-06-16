@@ -4,6 +4,7 @@ import pickle
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 
+
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train, params):
     """
@@ -16,7 +17,7 @@ def train_model(X_train, y_train, params):
     y_train : np.array
         Labels.
     params : dict
-        Dictionary 
+        Dictionary
     Returns
     -------
     model
@@ -25,7 +26,7 @@ def train_model(X_train, y_train, params):
     rf = RandomForestClassifier(
         **params,
     )
-    
+
     rf = rf.fit(X_train, y_train)
 
     return rf
@@ -55,7 +56,7 @@ def compute_model_metrics(y, preds):
 
 
 def inference(model, X):
-    """ Run model inferences and return the predictions.
+    """Run model inferences and return the predictions.
 
     Inputs
     ------
@@ -68,10 +69,11 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    
+
     return model.predict(X)
 
-def save_model(path, artifacts : dict):
+
+def save_model(path, artifacts: dict):
     """Saves artifacts to given directory as pickles
 
     Parameters
@@ -80,7 +82,7 @@ def save_model(path, artifacts : dict):
         Path or string to directory, if does not exists will create
     artifacts : dict
         Dict of name:artifact pairs. Names will be used as filenames
-    """    
+    """
     path = Path(path)
     if not path.is_dir():
         path.mkdir(parents=True)
