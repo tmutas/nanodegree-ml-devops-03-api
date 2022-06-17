@@ -1,8 +1,8 @@
-from pathlib import Path
 import pickle
+from pathlib import Path
 
-from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import fbeta_score, precision_score, recall_score
 
 
 # Optional: implement hyperparameter tuning.
@@ -91,3 +91,42 @@ def save_model(path, artifacts: dict):
         art_path = path / f"{name}.pkl"
         with art_path.open("wb+") as fl:
             pickle.dump(art, fl)
+
+
+def load_model(
+    path,
+    artifact_names=["model", "encoder", "labelbinarizer"],
+) -> dict:
+    """Load model artifacts from a directory
+
+    Parameters
+    ----------
+    path : path-like
+        Path to a directory, containing pickled artifacts
+    artifact_names : list, optional
+        filenames of the artifacts with .pkl ending implicitly assumed,
+        by default ["model", "encoder", "labelbinarizer"]
+
+    Returns
+    -------
+    dict
+        dict with name:artifact pairs
+
+    Raises
+    ------
+    NotADirectoryError
+        If path is not a directory
+    """
+    path = Path(path)
+
+    if not path.is_dir():
+        raise NotADirectoryError()
+
+    artifacts = {}
+
+    for name in artifact_names:
+        art_path = path / f"{name}.pkl"
+        with art_path.open("rb") as fl:
+            artifacts[name] = pickle.load(fl)
+
+    return artifacts

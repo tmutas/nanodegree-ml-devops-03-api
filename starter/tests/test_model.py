@@ -5,7 +5,7 @@ from pathlib import Path
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
-from starter.ml.model import train_model, save_model
+from starter.ml.model import train_model, save_model, load_model
 from starter.ml.data import process_data
 
 
@@ -53,3 +53,13 @@ def test_save_model(tmpdir, artifacts):
         with filepath.open("rb") as fl:
             obj = pickle.load(fl)
             assert isinstance(obj, type(value))
+
+
+def test_load_model(tmpdir, artifacts):
+    save_model(tmpdir, artifacts)
+
+    loaded_artifacts = load_model(tmpdir, list(artifacts.keys()))
+
+    # Compare that loaded_artifacts
+    for key, value in artifacts.items():
+        assert isinstance(loaded_artifacts[key], type(value))
