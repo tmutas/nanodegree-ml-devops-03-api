@@ -20,6 +20,7 @@ def train_data(rawdata_samples, cat_features, label_column):
     )
     return X, y, encoder, lb
 
+
 @pytest.fixture
 def dummy_artifacts():
     arts = {
@@ -66,15 +67,11 @@ def test_load_model(tmpdir, dummy_artifacts):
 
 
 def test_inference(
-    rawdata_samples,
-    train_data,
-    random_forest_config,
-    cat_features,
-    label_column
+    rawdata_samples, train_data, random_forest_config, cat_features, label_column
 ):
     X_train, y_train, encoder, lb = train_data
     model = train_model(X_train, y_train, random_forest_config)
-    
+
     X_raw = rawdata_samples.drop(columns=label_column).head(1)
 
     inference = infer_from_pipeline(
