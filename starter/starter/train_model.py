@@ -59,7 +59,12 @@ def run(args):
 
     logging.debug("Model trained")
 
-    artifacts = {"model": model, "encoder": encoder, "labelbinarizer": lb}
+    artifacts = {
+        "model": model,
+        "encoder": encoder,
+        "labelbinarizer": lb,
+        "categorical_features":cat_features
+    }
     if args.artifact_path is not None:
         save_model(args.artifact_path, artifacts)
         logging.debug(f"Artifacts saved to {args.artifact_path}")
