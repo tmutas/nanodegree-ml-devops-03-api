@@ -1,0 +1,17 @@
+{
+    "model": {
+        "n_estimators": 5,
+        "max_depth": 2
+    },
+    "cat_features": [
+        "workclass",
+        "education",
+        "marital-status",
+        "occupation",
+        "relationship",
+        "race",
+        "sex",
+        "native-country"
+    ],
+    "label_column" : "salary"
+}

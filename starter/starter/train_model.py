@@ -18,10 +18,13 @@ logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 # Add code to load in the data.
 def run(args):
     if args.model_params is not None:
-        train_params = json.load(args.model_params)
+        with args.model_params.open() as fl:
+            params = json.load(fl)
     else:
-        train_params = {}
+        params = {}
 
+    cat_features = params.get("cat_features", [])
+    label = params.get("label_column", "salary")
     rawdata = pd.read_csv(args.rawdata)
 
     logging.debug("Loaded rawdata dataframe")
@@ -32,32 +35,26 @@ def run(args):
 
     logging.debug("Train test split performed")
 
-    cat_features = [
-        "workclass",
-        "education",
-        "marital-status",
-        "occupation",
-        "relationship",
-        "race",
-        "sex",
-        "native-country",
-    ]
-
     X_train, y_train, encoder, lb = process_data(
-        train, categorical_features=cat_features, label="salary", training=True
+        train, categorical_features=cat_features, label=label, training=True
     )
 
     # Process the test data with the process_data function.
 
-    X_test, y_test, encoder_test, lb_test = process_data(
-        test, categorical_features=cat_features, label="salary", training=True
+    X_test, y_test, _, _ = process_data(
+        test,
+        categorical_features=cat_features,
+        label=label,
+        training=False,
+        encoder=encoder,
+        lb=lb,
     )
 
     logging.debug("Train and test data processed")
 
     # Train and save a model.
 
-    train_params = {"n_estimators": 5, "max_depth": 2}
+    train_params = params.get("model", dict())
     model = train_model(X_train, y_train, train_params)
 
     logging.debug("Model trained")
@@ -79,7 +76,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "--artifact_path",
         type=Path,
-        help="Directory to where model artifacts are to be saved, does not save by default",
+        help=(
+            "Directory to where model artifacts are to be saved, "
+            "does not save by default"
+        ),
         required=False,
         default=None,
     )
