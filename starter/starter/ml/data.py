@@ -68,3 +68,35 @@ def process_data(
 
     X = np.concatenate([X_continuous, X_categorical], axis=1)
     return X, y, encoder, lb
+
+def infer_from_pipeline(
+    X_raw,
+    categorical_features,
+    model,
+    encoder,
+    lb
+):
+    """Perform inference from raw data
+
+    Parameters
+    ----------
+    X_raw : pd.DataFrame
+        Raw dataframe with column names
+    model : 
+        Model instance with predict function
+    encoder : OneHotEncoder
+        OneHotEncoder instance
+    lb : LabelBinarizer
+        LabelBinarizer instance
+    """
+
+    X_proc, *_ = process_data(
+        X_raw,
+        categorical_features=categorical_features,
+        label=None,
+        training=False,
+        encoder=encoder,
+        lb=lb
+    )
+
+    return model.predict(X_proc)

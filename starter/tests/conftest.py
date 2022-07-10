@@ -24,6 +24,9 @@ def cat_features():
         "native-country",
     ]
 
+@pytest.fixture
+def label_column():
+    return "salary"
 
 @pytest.fixture
 def random_forest_config():

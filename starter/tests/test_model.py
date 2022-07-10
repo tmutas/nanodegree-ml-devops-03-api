@@ -2,26 +2,26 @@ import pytest
 import pickle
 from pathlib import Path
 
+import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
 from starter.ml.model import train_model, save_model, load_model
-from starter.ml.data import process_data
+from starter.ml.data import process_data, infer_from_pipeline
 
 
 @pytest.fixture
-def train_data(rawdata_samples, cat_features):
-    *train_data, encoder, lb = process_data(
+def train_data(rawdata_samples, cat_features, label_column):
+    X, y, encoder, lb = process_data(
         rawdata_samples,
         categorical_features=cat_features,
-        label="salary",
+        label=label_column,
         training=True,
     )
-    return train_data
-
+    return X, y, encoder, lb
 
 @pytest.fixture
-def artifacts():
+def dummy_artifacts():
     arts = {
         "model": RandomForestClassifier(),
         "binarizer": LabelBinarizer(),
@@ -32,7 +32,7 @@ def artifacts():
 
 
 def test_train_model(train_data, random_forest_config):
-    model = train_model(*train_data, random_forest_config)
+    model = train_model(train_data[0], train_data[1], random_forest_config)
 
     # Test that desired model is returned
     assert isinstance(model, RandomForestClassifier)
@@ -42,10 +42,10 @@ def test_train_model(train_data, random_forest_config):
         assert getattr(model, key) == value
 
 
-def test_save_model(tmpdir, artifacts):
-    save_model(tmpdir, artifacts)
+def test_save_model(tmpdir, dummy_artifacts):
+    save_model(tmpdir, dummy_artifacts)
 
-    for key, value in artifacts.items():
+    for key, value in dummy_artifacts.items():
         filepath = Path(tmpdir) / f"{key}.pkl"
 
         assert filepath.exists()
@@ -55,11 +55,36 @@ def test_save_model(tmpdir, artifacts):
             assert isinstance(obj, type(value))
 
 
-def test_load_model(tmpdir, artifacts):
-    save_model(tmpdir, artifacts)
+def test_load_model(tmpdir, dummy_artifacts):
+    save_model(tmpdir, dummy_artifacts)
 
-    loaded_artifacts = load_model(tmpdir, list(artifacts.keys()))
+    loaded_artifacts = load_model(tmpdir, list(dummy_artifacts.keys()))
 
-    # Compare that loaded_artifacts
-    for key, value in artifacts.items():
+    # Compare that loaded_dummy_artifacts
+    for key, value in dummy_artifacts.items():
         assert isinstance(loaded_artifacts[key], type(value))
+
+
+def test_inference(
+    rawdata_samples,
+    train_data,
+    random_forest_config,
+    cat_features,
+    label_column
+):
+    X_train, y_train, encoder, lb = train_data
+    model = train_model(X_train, y_train, random_forest_config)
+    
+    X_raw = rawdata_samples.drop(columns=label_column).head(1)
+
+    inference = infer_from_pipeline(
+        X_raw,
+        categorical_features=cat_features,
+        model=model,
+        encoder=encoder,
+        lb=lb,
+    )
+
+    assert isinstance(inference, np.ndarray)
+    # Testing a classfier, has to return 0 or 1
+    assert inference[0] in (0, 1)
