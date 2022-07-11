@@ -95,17 +95,13 @@ def save_model(path, artifacts: dict):
 
 def load_model(
     path,
-    artifact_names=["model", "encoder", "labelbinarizer"],
 ) -> dict:
-    """Load model artifacts from a directory
+    """Load model artifacts from a directory with .pkl files
 
     Parameters
     ----------
     path : path-like
         Path to a directory, containing pickled artifacts
-    artifact_names : list, optional
-        filenames of the artifacts with .pkl ending implicitly assumed,
-        by default ["model", "encoder", "labelbinarizer"]
 
     Returns
     -------
@@ -124,9 +120,9 @@ def load_model(
 
     artifacts = {}
 
-    for name in artifact_names:
-        art_path = path / f"{name}.pkl"
-        with art_path.open("rb") as fl:
+    for file in path.glob("*.pkl"):
+        name = file.name.replace(".pkl","")
+        with file.open("rb") as fl:
             artifacts[name] = pickle.load(fl)
 
     return artifacts
