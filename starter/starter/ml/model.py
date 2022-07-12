@@ -121,7 +121,7 @@ def load_model(
     artifacts = {}
 
     for file in path.glob("*.pkl"):
-        name = file.name.replace(".pkl","")
+        name = file.name.replace(".pkl", "")
         with file.open("rb") as fl:
             artifacts[name] = pickle.load(fl)
 

@@ -1,5 +1,4 @@
 """A simple test api using FastAPI"""
-from typing import Union
 import json
 
 from fastapi import FastAPI
@@ -23,6 +22,10 @@ config = load_config()
 artifacts = load_model(config["artifact_path"])
 
 
+def underscore_to_hyphen(s):
+    return s.replace("_", "-")
+
+
 class InputModel(BaseModel):
     age: int
     workclass: str
@@ -41,7 +44,7 @@ class InputModel(BaseModel):
 
     class Config:
         # Changes field names with hyphens as they are used in raw data
-        alias_generator = lambda s: s.replace("_", "-")
+        alias_generator = underscore_to_hyphen
 
 
 @app.get("/")
