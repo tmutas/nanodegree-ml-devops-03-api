@@ -59,7 +59,7 @@ def test_save_model(tmpdir, dummy_artifacts):
 def test_load_model(tmpdir, dummy_artifacts):
     save_model(tmpdir, dummy_artifacts)
 
-    loaded_artifacts = load_model(tmpdir, list(dummy_artifacts.keys()))
+    loaded_artifacts = load_model(tmpdir)
 
     # Compare that loaded_dummy_artifacts
     for key, value in dummy_artifacts.items():
