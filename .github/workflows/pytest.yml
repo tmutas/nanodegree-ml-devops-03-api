@@ -34,6 +34,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Train base model
+        run: |
+          python starter/train_model.py tests/test_rawdata.csv --artifact_path model/run002 --model_params starter/config.json
       - name: Test with pytest
         run: |
           python -m pytest
