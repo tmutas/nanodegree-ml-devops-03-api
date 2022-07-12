@@ -12,7 +12,8 @@ def test_welcome_message():
 
 
 def test_inference(rawdata_json_record):
-    r = client.post("/infer", data=rawdata_json_record)
+    record, prediction = rawdata_json_record
+    r = client.post("/infer", data=record)
 
     assert r.status_code == 200
-    assert int(r.text) == 0
+    assert int(r.text) == prediction
