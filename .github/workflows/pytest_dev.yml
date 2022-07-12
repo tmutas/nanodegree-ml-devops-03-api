@@ -5,7 +5,7 @@ name: Pytest
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "dev-pytest-workflow" ]
 
 permissions:
   contents: read
