@@ -7,6 +7,7 @@ from sklearn.metrics import fbeta_score, precision_score, recall_score
 
 from .data import process_data
 
+
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train, params):
     """
@@ -58,18 +59,13 @@ def compute_model_metrics(y, preds):
     return metrics
 
 
-def compute_slice_metrics(
-    df_raw: pd.DataFrame,
-    col: str,
-    artifacts: dict,
-    label: str
-):
+def compute_slice_metrics(df_raw: pd.DataFrame, col: str, artifacts: dict, label: str):
     """Computes metrics on slices based on a categorical column
 
     Parameters
     ----------
     df_raw : pd.DataFrame
-        The raw dataframce with feature columns and known labels 
+        The raw dataframce with feature columns and known labels
     col : str
         Column name on which to slice the data on
     artifacts : dict
