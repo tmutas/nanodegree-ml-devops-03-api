@@ -31,7 +31,8 @@ def run(args):
 
     # Optional enhancement, use K-fold cross validation instead of a
     # train-test split.
-    train, test = train_test_split(rawdata, test_size=0.20)
+    test_size = params.get("test_size", 0.3)
+    train, test = train_test_split(rawdata, test_size=test_size)
 
     logging.debug("Train test split performed")
 
@@ -73,10 +74,7 @@ def run(args):
 
     for col in cat_features:
         col_metrics = compute_slice_metrics(
-            test,
-            col=col,
-            artifacts=artifacts,
-            label=label
+            test, col=col, artifacts=artifacts, label=label
         )
 
         # Save slice metrics as json

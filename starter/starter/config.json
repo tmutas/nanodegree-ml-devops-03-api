@@ -1,6 +1,6 @@
 {
     "model": {
-        "n_estimators": 5,
+        "n_estimators": 10,
         "max_depth": 2
     },
     "cat_features": [
@@ -13,5 +13,6 @@
         "sex",
         "native-country"
     ],
-    "label_column" : "salary"
+    "label_column" : "salary",
+    "test_size" : 0.4
 }
