@@ -49,12 +49,12 @@ def rawdata_samples(request, rawdata_full):
     return rawdata_full.sample(random_state=request.param)
 
 
-@pytest.fixture(params = [0, 1])
+@pytest.fixture(params=[0, 1])
 def rawdata_json_record(rawdata_full, label_column, request):
     index = request.param
 
     series = rawdata_full.iloc[index, :]
     input_dict = series.drop(label_column).to_dict()
-    
-    record =json.dumps(input_dict, ensure_ascii=False)
+
+    record = json.dumps(input_dict, ensure_ascii=False)
     return record, index
