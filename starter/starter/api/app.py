@@ -4,7 +4,6 @@ import json
 from fastapi import FastAPI
 import pandas as pd
 from pydantic import BaseModel
-
 from ..ml.data import infer_from_pipeline
 from ..ml.model import load_model
 
@@ -45,7 +44,24 @@ class InputModel(BaseModel):
     class Config:
         # Changes field names with hyphens as they are used in raw data
         alias_generator = underscore_to_hyphen
-
+        schema_extra = {
+            "example": {
+                "age": 39,
+                "workclass": "State-gov",
+                "fnlgt": 77516,
+                "education": "Bachelors",
+                "education-num": 13,
+                "marital-status": "Never-married",
+                "occupation": "Adm-clerical",
+                "relationship": "Not-in-family",
+                "race": "White",
+                "sex": "Male",
+                "capital-gain": 2174,
+                "capital-loss": 0,
+                "hours-per-week": 40,
+                "native-country": "United-States"
+            }
+        }
 
 @app.get("/")
 async def hello_world() -> dict:
@@ -65,12 +81,12 @@ async def infer(input: InputModel) -> int:
 
     Parameters
     ----------
-    input : Union[InputModel, None], optional
-        The input data
+    input : InputModel
+        The input datam, see schema
 
     Returns
     -------
-    float
+    int
         The prediction for the input data, given the currently configured model
     """
     input_df = pd.DataFrame([input.dict(by_alias=True)])
