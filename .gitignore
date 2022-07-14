@@ -1,5 +1,5 @@
 # Project-specific
-starter/model/*
+model/*
 .vscode/*
 */.DS_Store
 
