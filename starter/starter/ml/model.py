@@ -1,9 +1,11 @@
 import pickle
 from pathlib import Path
 
+import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 
+from .data import process_data
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train, params):
@@ -44,15 +46,58 @@ def compute_model_metrics(y, preds):
         Predicted labels, binarized.
     Returns
     -------
-    precision : float
-    recall : float
-    fbeta : float
+    dict
+        Metrics values for "precision", "recall" and "fbeta" as keys
+        and "n" denoting sample size
     """
-    precision = precision_score(y, preds, zero_division=1)
-    recall = recall_score(y, preds, zero_division=1)
-    fbeta = fbeta_score(y, preds, beta=1, zero_division=1)
+    metrics = {}
+    metrics["precision"] = precision_score(y, preds, zero_division=1)
+    metrics["recall"] = recall_score(y, preds, zero_division=1)
+    metrics["fbeta"] = fbeta_score(y, preds, beta=1, zero_division=1)
+    metrics["n"] = len(y)
+    return metrics
 
-    return precision, recall, fbeta
+
+def compute_slice_metrics(
+    df_raw: pd.DataFrame,
+    col: str,
+    artifacts: dict,
+    label: str
+):
+    """Computes metrics on slices based on a categorical column
+
+    Parameters
+    ----------
+    df_raw : pd.DataFrame
+        The raw dataframce with feature columns and known labels 
+    col : str
+        Column name on which to slice the data on
+    artifacts : dict
+        Containing model, encoder, labelbinarizer and categorical_features
+        Necesseary for the processing pipeline
+    label : str
+        Label column name
+
+    Returns
+    -------
+    dict
+        For each unique value of col, contains a dict with metric keys and values
+    """
+    col_values = df_raw[col].unique()
+    col_metrics = {}
+    for val in col_values:
+        X, y, *_ = process_data(
+            df_raw[df_raw.loc[:, col] == val],
+            categorical_features=artifacts["categorical_features"],
+            label=label,
+            training=False,
+            encoder=artifacts["encoder"],
+            lb=artifacts["labelbinarizer"],
+        )
+        pred = artifacts["model"].predict(X)
+        col_metrics[val] = compute_model_metrics(y, pred)
+
+    return col_metrics
 
 
 def inference(model, X):
