@@ -1,4 +1,16 @@
-Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
+# Udacity ML DevOps Nanodegree - Project 3
+This project was made as part of the Udacity Machine Learning DevOps Nanodegree.
+
+Goal of the project was to
+- Write a basic pipeline for the training of a simple Random Forest Classifier
+- Make it available through an API made with FastAPI 
+- Write a test suite for the pipeline as well as the API using pytest
+- Set up a basic CI/CD framework with GitHub Actions and Heroku
+
+The final API has been deployed under https://nanodegree-ml-devops-03-api.herokuapp.com/docs.
+
+It can take a while when it's accessed the first time, because Heroku idles the app and has to start it up again.
+# ===== Instructions for the project =====
 
 # Environment Set up
 * Download and install conda if you don’t have it already.
