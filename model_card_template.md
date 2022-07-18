@@ -18,7 +18,16 @@
 - Using sklearn's train_test_split, set 0.3 of the raw dataset aside for model evaluation
 
 ## Metrics
-- No through analysis of model performance has been conducted, since the focus of this exercise was on MLOps
+- Disclaimer: No thorough hyperparameter tuning and/or analysis of model performance has been conducted, since the focus of this exercise was on MLOps
+- Nevertheless, metrics considered in this exercise were
+    - Precision (Positive Predictive Value), 
+    - Recall (True Positive Rate)
+    - F1-score as a summary metrics, which is the harmornic mean of the aforementioned two metrics
+- Baseline metrics obtained from a Random Forest Classifier were:
+    - Precision: 0.793
+    - Recall: 0.537
+    - F1-Score: 0.64
+- This can be obviously improved by proper hyperparameter tuning
 
 ## Ethical Considerations
 - The dataset contains sensitive personal information such as gender, race, marital status, etc.

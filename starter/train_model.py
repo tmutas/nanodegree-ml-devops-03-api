@@ -10,7 +10,12 @@ from sklearn.model_selection import train_test_split
 
 # Add the necessary imports for the starter code.
 from ml.data import process_data
-from ml.model import train_model, save_model, compute_slice_metrics
+from ml.model import (
+    train_model,
+    save_model,
+    compute_slice_metrics,
+    compute_model_metrics
+)
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
@@ -69,6 +74,17 @@ def run(args):
     if args.artifact_path is not None:
         save_model(args.artifact_path, artifacts)
         logging.debug(f"Artifacts saved to {args.artifact_path}")
+
+    # Calculate overall model metrics
+    y_pred = model.predict(X_test)
+    overall_metrics = compute_model_metrics(y_test, y_pred)
+    
+    # Save slice metrics as json
+    if args.artifact_path is not None:
+        overall_metrics_file = args.artifact_path / f"overall_metrics.json"
+        with overall_metrics_file.open("w+") as fl:
+            json.dump(overall_metrics, fl, indent=4)
+    logging.debug(f"Overall metrics saved to {args.artifact_path}")
 
     # Calculate metrics on slices of all categorical columns
 
