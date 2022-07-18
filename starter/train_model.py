@@ -14,7 +14,7 @@ from ml.model import (
     train_model,
     save_model,
     compute_slice_metrics,
-    compute_model_metrics
+    compute_model_metrics,
 )
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
@@ -78,10 +78,10 @@ def run(args):
     # Calculate overall model metrics
     y_pred = model.predict(X_test)
     overall_metrics = compute_model_metrics(y_test, y_pred)
-    
+
     # Save slice metrics as json
     if args.artifact_path is not None:
-        overall_metrics_file = args.artifact_path / f"overall_metrics.json"
+        overall_metrics_file = args.artifact_path / "overall_metrics.json"
         with overall_metrics_file.open("w+") as fl:
             json.dump(overall_metrics, fl, indent=4)
     logging.debug(f"Overall metrics saved to {args.artifact_path}")
