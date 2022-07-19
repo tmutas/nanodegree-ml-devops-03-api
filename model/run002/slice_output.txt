@@ -1,0 +1,630 @@
+{
+    "workclass": {
+        "Self-emp-not-inc": {
+            "precision": 0.8333333333333334,
+            "recall": 0.01557632398753894,
+            "fbeta": 0.03058103975535168,
+            "n": 1058
+        },
+        "?": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 733
+        },
+        "Private": {
+            "precision": 0.9661016949152542,
+            "recall": 0.029625779625779627,
+            "fbeta": 0.05748865355521937,
+            "n": 9058
+        },
+        "State-gov": {
+            "precision": 1.0,
+            "recall": 0.02027027027027027,
+            "fbeta": 0.03973509933774835,
+            "n": 515
+        },
+        "Federal-gov": {
+            "precision": 1.0,
+            "recall": 0.02702702702702703,
+            "fbeta": 0.052631578947368425,
+            "n": 371
+        },
+        "Self-emp-inc": {
+            "precision": 0.8666666666666667,
+            "recall": 0.15354330708661418,
+            "fbeta": 0.26086956521739135,
+            "n": 449
+        },
+        "Local-gov": {
+            "precision": 1.0,
+            "recall": 0.0371900826446281,
+            "fbeta": 0.07171314741035857,
+            "n": 831
+        },
+        "Without-pay": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0,
+            "n": 7
+        },
+        "Never-worked": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0,
+            "n": 3
+        }
+    },
+    "education": {
+        "Some-college": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 2887
+        },
+        "Assoc-voc": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 559
+        },
+        "Bachelors": {
+            "precision": 0.9166666666666666,
+            "recall": 0.02570093457943925,
+            "fbeta": 0.05,
+            "n": 2116
+        },
+        "11th": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 483
+        },
+        "HS-grad": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 4181
+        },
+        "7th-8th": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 257
+        },
+        "Assoc-acdm": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 405
+        },
+        "5th-6th": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 136
+        },
+        "Prof-school": {
+            "precision": 1.0,
+            "recall": 0.005494505494505495,
+            "fbeta": 0.010928961748633882,
+            "n": 258
+        },
+        "1st-4th": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 61
+        },
+        "Masters": {
+            "precision": 0.9306930693069307,
+            "recall": 0.2379746835443038,
+            "fbeta": 0.3790322580645161,
+            "n": 706
+        },
+        "12th": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 166
+        },
+        "Doctorate": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 164
+        },
+        "10th": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 415
+        },
+        "9th": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 207
+        },
+        "Preschool": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0,
+            "n": 24
+        }
+    },
+    "marital-status": {
+        "Married-civ-spouse": {
+            "precision": 0.9285714285714286,
+            "recall": 0.044436004557538926,
+            "fbeta": 0.08481333816600216,
+            "n": 6005
+        },
+        "Never-married": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 4299
+        },
+        "Divorced": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 1758
+        },
+        "Widowed": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 408
+        },
+        "Married-spouse-absent": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 155
+        },
+        "Separated": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 390
+        },
+        "Married-AF-spouse": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 10
+        }
+    },
+    "occupation": {
+        "Sales": {
+            "precision": 0.8571428571428571,
+            "recall": 0.014084507042253521,
+            "fbeta": 0.02771362586605081,
+            "n": 1518
+        },
+        "?": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 736
+        },
+        "Prof-specialty": {
+            "precision": 1.0,
+            "recall": 0.003870967741935484,
+            "fbeta": 0.007712082262210797,
+            "n": 1688
+        },
+        "Craft-repair": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 1614
+        },
+        "Adm-clerical": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 1468
+        },
+        "Tech-support": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 356
+        },
+        "Handlers-cleaners": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 586
+        },
+        "Farming-fishing": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 396
+        },
+        "Other-service": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 1313
+        },
+        "Machine-op-inspct": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 790
+        },
+        "Exec-managerial": {
+            "precision": 0.9391304347826087,
+            "recall": 0.13953488372093023,
+            "fbeta": 0.24296962879640044,
+            "n": 1607
+        },
+        "Transport-moving": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 631
+        },
+        "Protective-serv": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 265
+        },
+        "Priv-house-serv": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 53
+        },
+        "Armed-Forces": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 4
+        }
+    },
+    "relationship": {
+        "Husband": {
+            "precision": 0.9285714285714286,
+            "recall": 0.05030094582975064,
+            "fbeta": 0.09543230016313213,
+            "n": 5277
+        },
+        "Not-in-family": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 3300
+        },
+        "Own-child": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 2034
+        },
+        "Unmarried": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 1351
+        },
+        "Other-relative": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 422
+        },
+        "Wife": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 641
+        }
+    },
+    "race": {
+        "White": {
+            "precision": 0.9262295081967213,
+            "recall": 0.04025650160313502,
+            "fbeta": 0.07715944008193924,
+            "n": 11137
+        },
+        "Asian-Pac-Islander": {
+            "precision": 1.0,
+            "recall": 0.02702702702702703,
+            "fbeta": 0.052631578947368425,
+            "n": 425
+        },
+        "Black": {
+            "precision": 1.0,
+            "recall": 0.00625,
+            "fbeta": 0.012422360248447204,
+            "n": 1251
+        },
+        "Other": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 88
+        },
+        "Amer-Indian-Eskimo": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 124
+        }
+    },
+    "sex": {
+        "Male": {
+            "precision": 0.9285714285714286,
+            "recall": 0.04450361354127044,
+            "fbeta": 0.08493647912885663,
+            "n": 8740
+        },
+        "Female": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 4285
+        }
+    },
+    "native-country": {
+        "United-States": {
+            "precision": 0.9210526315789473,
+            "recall": 0.03727369542066028,
+            "fbeta": 0.07164790174002049,
+            "n": 11658
+        },
+        "Mexico": {
+            "precision": 1.0,
+            "recall": 0.1,
+            "fbeta": 0.18181818181818182,
+            "n": 263
+        },
+        "Philippines": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 74
+        },
+        "?": {
+            "precision": 1.0,
+            "recall": 0.04285714285714286,
+            "fbeta": 0.0821917808219178,
+            "n": 237
+        },
+        "Japan": {
+            "precision": 1.0,
+            "recall": 0.1,
+            "fbeta": 0.18181818181818182,
+            "n": 26
+        },
+        "Jamaica": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 34
+        },
+        "Germany": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 57
+        },
+        "India": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 42
+        },
+        "Cuba": {
+            "precision": 1.0,
+            "recall": 0.25,
+            "fbeta": 0.4,
+            "n": 34
+        },
+        "Peru": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0,
+            "n": 9
+        },
+        "England": {
+            "precision": 1.0,
+            "recall": 0.058823529411764705,
+            "fbeta": 0.1111111111111111,
+            "n": 43
+        },
+        "Puerto-Rico": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 48
+        },
+        "South": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 32
+        },
+        "Vietnam": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 25
+        },
+        "Nicaragua": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 14
+        },
+        "Guatemala": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 24
+        },
+        "Italy": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 32
+        },
+        "Yugoslavia": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 6
+        },
+        "Cambodia": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 9
+        },
+        "Holand-Netherlands": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0,
+            "n": 1
+        },
+        "Trinadad&Tobago": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 10
+        },
+        "Poland": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 24
+        },
+        "El-Salvador": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 41
+        },
+        "Ecuador": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "fbeta": 0.6666666666666666,
+            "n": 14
+        },
+        "Canada": {
+            "precision": 1.0,
+            "recall": 0.058823529411764705,
+            "fbeta": 0.1111111111111111,
+            "n": 53
+        },
+        "Taiwan": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 23
+        },
+        "China": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 32
+        },
+        "Thailand": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 7
+        },
+        "Outlying-US(Guam-USVI-etc)": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0,
+            "n": 1
+        },
+        "Columbia": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0,
+            "n": 16
+        },
+        "Ireland": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 5
+        },
+        "Dominican-Republic": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0,
+            "n": 29
+        },
+        "Scotland": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 8
+        },
+        "Iran": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 12
+        },
+        "Laos": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 4
+        },
+        "Hong": {
+            "precision": 1.0,
+            "recall": 0.3333333333333333,
+            "fbeta": 0.5,
+            "n": 9
+        },
+        "France": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 10
+        },
+        "Hungary": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 5
+        },
+        "Greece": {
+            "precision": 1.0,
+            "recall": 0.2,
+            "fbeta": 0.33333333333333337,
+            "n": 13
+        },
+        "Haiti": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 23
+        },
+        "Portugal": {
+            "precision": 1.0,
+            "recall": 0.0,
+            "fbeta": 0.0,
+            "n": 13
+        },
+        "Honduras": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "fbeta": 1.0,
+            "n": 5
+        }
+    }
+}

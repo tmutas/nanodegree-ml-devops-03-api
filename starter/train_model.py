@@ -88,16 +88,17 @@ def run(args):
 
     # Calculate metrics on slices of all categorical columns
 
+    col_metrics = {}
     for col in cat_features:
-        col_metrics = compute_slice_metrics(
+        col_metrics[col] = compute_slice_metrics(
             test, col=col, artifacts=artifacts, label=label
         )
 
         # Save slice metrics as json
-        if args.artifact_path is not None:
-            col_metric_file = args.artifact_path / f"slice_metrics_{col}.json"
-            with col_metric_file.open("w+") as fl:
-                json.dump(col_metrics, fl, indent=4)
+    if args.artifact_path is not None:
+        col_metric_file = args.artifact_path / "slice_output.txt"
+        with col_metric_file.open("w+") as fl:
+            json.dump(col_metrics, fl, indent=4)
     logging.debug(f"Sliced metrics saved to {args.artifact_path}")
 
 
